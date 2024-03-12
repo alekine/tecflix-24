@@ -36,8 +36,6 @@
 
 
 
-
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Estilos/InicioPeliculas.css';
@@ -58,7 +56,7 @@ function InicioPeliculas() {
       />
       <div className="movies-container">
         {imagesData.map((movie, index) => (
-          <Link to="/resenaForm" key={index} className="movie-link">
+          <Link to={`/resena?imagen=${encodeURIComponent(movie.image)}`} key={index} className="movie-link">
             <div className="movie">
               <img src={movie.image} alt={movie.title} />
               <h2 style={{ color: 'white' }}>{movie.title}</h2>
@@ -71,4 +69,3 @@ function InicioPeliculas() {
 }
 
 export default InicioPeliculas;
-
