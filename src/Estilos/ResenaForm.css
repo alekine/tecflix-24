@@ -1,4 +1,4 @@
-ResenaForm.css
+/* ResenaForm.css
 
 .resena-form {
   max-width: 800px;
@@ -75,4 +75,96 @@ textarea {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+} */
+
+
+
+
+
+
+
+
+
+
+
+/* ResenaForm.css */
+
+.resena-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.inicio-button {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.pelicula-image {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pelicula-image img {
+  max-width: 100%;
+  border-radius: 5px;
+  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+
+.form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ResenaForm.css */
+
+.pelicula-image img {
+  max-width: 300px; /* Define el ancho máximo de la imagen */
+  height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+  border-radius: 5px;
+
 }

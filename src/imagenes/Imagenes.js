@@ -13,7 +13,7 @@ import imagenPelicula10 from './Dataimg/shangchi.jpg';
 import imagenPelicula11 from './Dataimg/guardianes.jpg';
 import imagenPelicula12 from './Dataimg/starwars.jpg';
 
-// Importa más imágens si es necesario...
+
 
 const imagesData = [
   { title: 'Endgame', image: imagenPelicula1 },
@@ -30,11 +30,6 @@ const imagesData = [
   { title: 'Star Wars', image: imagenPelicula12 },
 
   
-
-
-
-
-  // Agrega más películas con sus imágenes...
 ];
 
 export default imagesData;
