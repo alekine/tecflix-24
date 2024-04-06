@@ -1,39 +1,36 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
+function ListaPeliculas() {
+  const [peliculas, setPeliculas] = useState([]);
 
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../Estilos/InicioPeliculas.css';
-import imagesData from '../imagenes/Imagenes.js';
-
-function InicioPeliculas() {
-  const [searchTerm, setSearchTerm] = useState('');
+  useEffect(() => {
+    // Realizar una solicitud para obtener las películas de la base de datos
+    axios.get('http://localhost:5000/Movies')
+      .then(response => {
+        setPeliculas(response.data); // Almacena las películas en el estado local
+        console.log('Respuesta del servidor:', response.data);
+    setPeliculas(response.data)
+        
+      })
+      .catch(error => {
+        console.error('Error al obtener las películas:', error);
+      });
+  }, []);
 
   return (
-    <div className="app" style={{ backgroundColor: '#030918', color: 'white' }}>
-      <h1 style={{ color: 'red' }}>TecFlix</h1>
-
-      <input
-        type="text"
-        placeholder="Buscar en películas"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ color: 'black', backgroundColor: 'white' }}//caja busqueda
-      />
-
-      
-      <div className="movies-container">
-        {imagesData.map((movie, index) => (
-          <Link to={`/resena?imagen=${encodeURIComponent(movie.image)}`} key={index} className="movie-link">
-            <div className="movie">
-              <img src={movie.image} alt={movie.title} />
-              <h2 style={{ color: 'white' }}>{movie.title}</h2>
-            </div>
-          </Link>
+    <div>
+      <h2>Películas</h2>
+      <div className="peliculas-container">
+        {peliculas.map(pelicula => (
+          <div key={pelicula._id} className="pelicula">
+            <img src={pelicula.imagen} alt={pelicula.titulo} />
+            <h3>{pelicula.titulo}</h3>
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-export default InicioPeliculas;
+export default ListaPeliculas;

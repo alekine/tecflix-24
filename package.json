@@ -6,12 +6,28 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.8",
+    "body-parser": "^1.19.0",
     "bootstrap": "^5.3.3",
+    "browserify-zlib": "^0.2.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "espress": "^0.0.0",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.3.0",
+    "mongosh": "^2.2.3",
+    "path": "^0.12.7",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "url": "^0.11.3",
     "web-vitals": "^2.1.4"
+  },
+  "resolutions": {
+    "zlib": "browserify-zlib"
   },
   "scripts": {
     "start": "react-scripts start",
