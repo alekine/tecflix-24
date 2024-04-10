@@ -16,7 +16,7 @@ import imagenPelicula12 from './Dataimg/starwars.jpg';
 
 
 const imagesData = [
-  { title: 'Endgame', image: imagenPelicula1 },
+  
   { title: 'Lobo de Wall Street', image: imagenPelicula2 },
   { title: 'Rapidos y Furiosos', image: imagenPelicula3 },
   { title: 'Sherk', image: imagenPelicula4 },
