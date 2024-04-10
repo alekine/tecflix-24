@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import InicioPeliculas from "../componentes/inicio";
+import InicioPeliculas from "../componentes/InicioPeliculas";
 // import ResenaForm from "../componentes/ResenaForm";
 // import AgregarPelicula from "../componentes/AgregarPelicula"; // Importa el componente AgregarPelicula
 
