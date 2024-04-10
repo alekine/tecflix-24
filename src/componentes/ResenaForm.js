@@ -47,7 +47,7 @@ function ResenaForm() {
       <form onSubmit={handleSubmit} className="form">
         <div className="input-group">
           <label>Nombre de la película:</label>
-          <input
+          <textarea
             type="text"
             value={nombrePelicula}
             onChange={(e) => setNombrePelicula(e.target.value)}
