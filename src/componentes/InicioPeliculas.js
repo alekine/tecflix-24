@@ -1,39 +1,40 @@
+import React, { useState, useEffect } from "react";
+import axios from "../server/Axios";
+import { Link } from "react-router-dom";
+import "../Estilos/InicioPeliculas.css";
 
+const MovieList = () => {
+  const [movies, setMovies] = useState([]);
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get("https://api-app-8ljh.onrender.com/api/movies/obtener");
+        setMovies(response.data);
+      } catch (error) {
+        console.error("Error al obtener las películas:", error);
+      }
+    };
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../Estilos/InicioPeliculas.css';
-import imagesData from '../imagenes/Imagenes.js';
-
-function InicioPeliculas() {
-  const [searchTerm, setSearchTerm] = useState('');
+    fetchMovies();
+  }, []);
 
   return (
-    <div className="app" style={{ backgroundColor: '#030918', color: 'white' }}>
-      <h1 style={{ color: 'red' }}>TecFlix</h1>
-
-      <input
-        type="text"
-        placeholder="Buscar en películas"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ color: 'black', backgroundColor: 'white' }}//caja busqueda
-      />
-
-      
-      <div className="movies-container">
-        {imagesData.map((movie, index) => (
-          <Link to={`/resena?imagen=${encodeURIComponent(movie.image)}`} key={index} className="movie-link">
-            <div className="movie">
-              <img src={movie.image} alt={movie.title} />
-              <h2 style={{ color: 'white' }}>{movie.title}</h2>
-            </div>
-          </Link>
+    <div>
+      <h1>Listado de Películas</h1>
+      <div className="movie-container">
+        {movies.map((movie, index) => (
+          <div key={index} className="movie-card">
+            <img src={movie.imagen} alt={movie.titulo} />
+            <h2>{movie.titulo}</h2>
+          </div>
         ))}
       </div>
+      <Link to="/agregar-pelicula">
+        <button>Agregar Película</button>
+      </Link>
     </div>
   );
-}
+};
 
-export default InicioPeliculas;
+export default MovieList;
