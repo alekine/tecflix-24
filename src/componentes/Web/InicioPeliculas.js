@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "../server/Axios";
+import axios from "../../server/Axios";
 import { Link } from "react-router-dom";
-import "../Estilos/InicioPeliculas.css";
+import "../../Estilos/InicioPeliculas.css";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -31,7 +31,7 @@ const MovieList = () => {
         ))}
       </div>
       <Link to="/agregar-pelicula">
-        <button>Agregar Película</button>
+      
       </Link>
     </div>
   );

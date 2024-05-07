@@ -1,0 +1,66 @@
+Estilo para el contenedor principal
+.movie-titles-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Estilo para la tabla de títulos de películas */
+  .movie-titles-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .movie-titles-table th,
+  .movie-titles-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Estilo para los botones */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para los campos de entrada */
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Estilo para el título */
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Estilo para los encabezados de la tabla */
+  th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Estilo para las filas alternas de la tabla */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  

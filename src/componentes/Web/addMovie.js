@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "../server/Axios";
-import "../Estilos/addMovie.css";
+import axios from "../../server/Axios";
+import "../../Estilos/addMovie.css";
 import { useNavigate } from "react-router-dom"; // Importar useNavigate
 
 const AddMovieForm = () => {
