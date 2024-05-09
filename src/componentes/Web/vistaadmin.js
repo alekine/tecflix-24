@@ -15,7 +15,7 @@ const MovieTitlesTable = () => {
   useEffect(() => {
     const fetchMovieTitles = async () => {
       try {
-        const response = await axios.get("https://api-app-8ljh.onrender.com/api/movies/obtener");
+        const response = await axios.get("https://api-app-8ljh.onrender.com/api/movies/obtenerMovie");
         setMovieTitles(response.data.map(movie => ({ id: movie._id, titulo: movie.titulo })));
       } catch (error) {
         console.error("Error al obtener los títulos de las películas:", error);

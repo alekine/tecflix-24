@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Importa Axios para realizar solicitudes HTTP
+import axios from "axios";
 import "../../Estilos/Loggin.css";
+import { jwtDecode } from "jwt-decode";
+
+
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -11,28 +14,36 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Realiza una solicitud POST para verificar las credenciales en el backend
-      const response = await axios.post("https://api-app-8ljh.onrender.com/api/Cuentas/auth", {
+      const response = await axios.post("https://api-app-8ljh.onrender.com/api/Cuentas/auth/login", {
         userName: username,
         password: password,
       });
 
-      // Si el usuario está autenticado correctamente, redirige a la página principal
-      if (response.data.msg === 'Usuario logueado correctamente') {
-        navigate("/vista-principal");
+      if (response.data.access && response.data.refresh) {
+        localStorage.setItem("accessToken", response.data.access);
+        localStorage.setItem("refreshToken", response.data.refresh);
+
+        // Verificar si el ID de la cuenta coincide con el ID de administrador
+        const decodedToken = jwtDecode(response.data.access);
+      const usuarioId = decodedToken.usuario_id;
+
+
+        const idAdmin = "663c3767d629eb962c78f07d";
+        if (usuarioId === idAdmin) {
+          navigate("/vista-admin");
+        } else {
+          navigate("/vista-principal");
+        }
       } else {
-        // Si las credenciales son inválidas, muestra un mensaje de error
         alert("Nombre de usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      // Si hay algún error en la solicitud, muestra un mensaje de error genérico
       alert("Error al iniciar sesión. Por favor, inténtalo de nuevo.");
     }
   };
 
   const handleCreateAccount = () => {
-    // Lógica para redirigir a la página de creación de cuenta
     navigate("/crear-cuenta");
   };
 
@@ -60,7 +71,6 @@ const LoginForm = () => {
         </div>
         <button type="submit">Iniciar Sesión</button>
       </form>
-      {/* Botón para redirigir a la página de creación de cuenta */}
       <button className="create-account-button" onClick={handleCreateAccount}>
         Crear Cuenta
       </button>

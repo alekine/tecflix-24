@@ -15,18 +15,18 @@ const CreateUserForm = () => {
         return;
       }
 
-      if (userName.length > 10) {
+      if (userName.length > 15) {
         alert("El nombre de usuario no puede tener más de 10 caracteres.");
         return;
       }
 
-      if (password.length > 16) {
+      if (password.length > 15) {
         alert("La contraseña no puede tener más de 16 caracteres.");
         return;
       }
 
       // Realizar una solicitud POST para guardar la cuenta de usuario en la base de datos
-      await axios.post("https://api-app-8ljh.onrender.com/api/Cuentas/post-cuenta", {
+      await axios.post("https://api-app-8ljh.onrender.com/api/Cuentas/auth/registro", {
         nameFull: fullName,
         userName: userName,
         password: password,
