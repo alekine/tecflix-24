@@ -23,7 +23,7 @@ const AddMovieForm = () => {
       setSinopsis("");
       setImagen("");
 
-    //   alert("Película agregada correctamente!");
+    alert("Película agregada correctamente!");
 
       // Redireccionar al inicio después de agregar la película
       navigate("/");
