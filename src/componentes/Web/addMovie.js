@@ -13,10 +13,10 @@ const AddMovieForm = () => {
     e.preventDefault();
 
     try {
-      await axios.post("https://api-app-8ljh.onrender.com/api/movies/addMovie", {
+      await axios.post("https://api-app-8ljh.onrender.com/api/movies/post", {
         titulo: titulo,
         sinopsis: sinopsis,
-        imagen: imagen,
+        imagen: imagen
       });
 
       setTitulo("");
