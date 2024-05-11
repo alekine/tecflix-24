@@ -26,10 +26,12 @@ const LoginForm = () => {
         // Verificar si el ID de la cuenta coincide con el ID de administrador
         const decodedToken = jwtDecode(response.data.access);
       const usuarioId = decodedToken.usuario_id;
+      // console.log(usuarioId)
 
 
         const idAdmin = "663c3767d629eb962c78f07d";
         if (usuarioId === idAdmin) {
+          
           navigate("/vista-admin");
         } else {
           navigate("/vista-principal");
@@ -49,6 +51,8 @@ const LoginForm = () => {
 
   return (
     <div className="login-container">
+      <h1>TecFlix</h1>
+
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -75,7 +79,11 @@ const LoginForm = () => {
         Crear Cuenta
       </button>
     </div>
+    
   );
+  
 };
 
-export default LoginForm;
+
+export default LoginForm; 
+

@@ -3,6 +3,8 @@ import axios from "../../server/Axios";
 import "../../Estilos/vistaadmin.css";
 import { Link } from "react-router-dom"; 
 
+
+
 const MovieTitlesTable = () => {
   const [movieTitles, setMovieTitles] = useState([]);
   const [deleteTitle, setDeleteTitle] = useState("");

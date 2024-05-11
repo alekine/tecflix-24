@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from "../../server/Axios";
+import "../../Estilos/crearCuenta.css"
+
+
+
 
 const CreateUserForm = () => {
   const [fullName, setFullName] = useState("");
@@ -16,12 +20,12 @@ const CreateUserForm = () => {
       }
 
       if (userName.length > 15) {
-        alert("El nombre de usuario no puede tener más de 10 caracteres.");
+        alert("El nombre de usuario no puede tener más de 15 caracteres.");
         return;
       }
 
-      if (password.length > 15) {
-        alert("La contraseña no puede tener más de 16 caracteres.");
+      if (password.length > 20) {
+        alert("La contraseña no puede tener más de 20 caracteres.");
         return;
       }
 
@@ -64,7 +68,7 @@ const CreateUserForm = () => {
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            maxLength={10}
+            maxLength={15}
             required
           />
         </div>
@@ -74,7 +78,7 @@ const CreateUserForm = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            maxLength={16}
+            maxLength={20}
             required
           />
         </div>
