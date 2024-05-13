@@ -7,6 +7,7 @@ const AddMovieForm = () => {
   const [titulo, setTitulo] = useState("");
   const [sinopsis, setSinopsis] = useState("");
   const [imagen, setImagen] = useState("");
+  const [categoria, setCategoria] = useState(""); // Estado para la categoría
   const navigate = useNavigate(); // Usar useNavigate para redireccionar
 
   const handleSubmit = async (e) => {
@@ -16,14 +17,17 @@ const AddMovieForm = () => {
       await axios.post("https://api-app-8ljh.onrender.com/api/movies/post", {
         titulo: titulo,
         sinopsis: sinopsis,
-        imagen: imagen
+        imagen: imagen,
+        categoria: categoria // Agregar la categoría a la solicitud POST
       });
 
+      // Limpiar los estados después de agregar la película
       setTitulo("");
       setSinopsis("");
       setImagen("");
+      setCategoria("");
 
-    alert("Película agregada correctamente!");
+      alert("Película agregada correctamente!");
 
       // Redireccionar al inicio después de agregar la película
       navigate("/");
@@ -60,6 +64,15 @@ const AddMovieForm = () => {
             type="text"
             value={imagen}
             onChange={(e) => setImagen(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Categoría:</label>
+          <input
+            type="text"
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
             required
           />
         </div>

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../server/Axios";
 import "../../Estilos/vistaadmin.css";
-import { Link } from "react-router-dom"; 
-
-
+import { Link } from "react-router-dom";
 
 const MovieTitlesTable = () => {
   const [movieTitles, setMovieTitles] = useState([]);
@@ -11,6 +9,7 @@ const MovieTitlesTable = () => {
   const [addTitle, setAddTitle] = useState("");
   const [addSynopsis, setAddSynopsis] = useState("");
   const [addImageUrl, setAddImageUrl] = useState("");
+  const [addCategory, setAddCategory] = useState(""); // Nuevo estado para la categoría
   const [showDeleteFields, setShowDeleteFields] = useState(false);
   const [showAddFields, setShowAddFields] = useState(false);
 
@@ -54,11 +53,13 @@ const MovieTitlesTable = () => {
         titulo: addTitle,
         sinopsis: addSynopsis,
         imagen: addImageUrl,
+        categoria: addCategory // Incluir la categoría en la solicitud POST
       });
       setMovieTitles([...movieTitles, { titulo: addTitle }]);
       setAddTitle("");
       setAddSynopsis("");
       setAddImageUrl("");
+      setAddCategory(""); // Reiniciar el estado de la categoría
       alert("Película agregada correctamente.");
     } catch (error) {
       console.error("Error al agregar la película:", error);
@@ -125,6 +126,12 @@ const MovieTitlesTable = () => {
               onChange={(e) => setAddImageUrl(e.target.value)}
               placeholder="URL de la imagen"
             />
+            <input
+              type="text"
+              value={addCategory}
+              onChange={(e) => setAddCategory(e.target.value)}
+              placeholder="Categoría" // Nuevo campo para la categoría
+            />
             <button className="add-button" onClick={handleAdd}>Agregar</button>
           </div>
         )}
@@ -132,7 +139,6 @@ const MovieTitlesTable = () => {
       {/* Botón para redirigir a la página de inicio de películas */}
       <Link to="/vista-principal"  className="view-fields">Ver Cambios</Link>
     </div>
-    
   );
 };
 

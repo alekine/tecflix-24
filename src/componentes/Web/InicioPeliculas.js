@@ -5,13 +5,20 @@ import "../../Estilos/InicioPeliculas.css";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
+  const [categories, setCategories] = useState([]); // Estado para almacenar las categorías únicas
   const [searchText, setSearchText] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(""); // Estado para la categoría seleccionada
+  const [showAllMovies, setShowAllMovies] = useState(true); // Estado para mostrar todas las películas
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get("https://api-app-8ljh.onrender.com/api/movies/obtenerMovie");
         setMovies(response.data);
+        // console.log(response)
+        // Extraer categorías únicas de las películas
+        const uniqueCategories = [...new Set(response.data.map(movie => movie.categoria))];
+        setCategories(uniqueCategories);
       } catch (error) {
         console.error("Error al obtener las películas:", error);
       }
@@ -20,14 +27,35 @@ const MovieList = () => {
     fetchMovies();
   }, []);
 
-  // Filtrar películas según el texto de búsqueda
+  // Filtrar películas según el texto de búsqueda, la categoría seleccionada y si se muestran todas las películas
   const filteredMovies = movies.filter((movie) =>
+    (showAllMovies || movie.categoria === selectedCategory) &&
     movie.titulo.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  // Función para manejar el clic en una categoría
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setShowAllMovies(false); // Cambiar el estado para dejar de mostrar todas las películas
+  };
+
+  // Función para manejar el clic en el botón "Todos"
+  const handleShowAllClick = () => {
+    setShowAllMovies(true); // Cambiar el estado para mostrar todas las películas
+    setSelectedCategory(""); // Limpiar la categoría seleccionada
+  };
+
   return (
     <div>
-      <h1>Listado de Películas</h1>
+      <h1>TexFlix</h1>
+      <div className="categories">
+        {/* Mostrar el botón "Todos" */}
+        <button onClick={handleShowAllClick}>Todos</button>
+        {/* Mostrar las categorías como botones */}
+        {categories.map((category, index) => (
+          <button key={index} onClick={() => handleCategoryClick(category)}>{category}</button>
+        ))}
+      </div>
       <div className="search-bar">
         <input
           type="text"
