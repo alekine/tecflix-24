@@ -15,7 +15,7 @@ const MovieList = () => {
       try {
         const response = await axios.get("https://api-app-8ljh.onrender.com/api/movies/obtenerMovie");
         setMovies(response.data);
-        // console.log(response)
+        
         // Extraer categorías únicas de las películas
         const uniqueCategories = [...new Set(response.data.map(movie => movie.categoria))];
         setCategories(uniqueCategories);
